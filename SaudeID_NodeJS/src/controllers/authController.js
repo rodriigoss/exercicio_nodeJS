@@ -1,20 +1,19 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 
-const Autor = require('../models/autor');
+const repository = require('../repositories/autorRepository');
 
-const router = express.Router();
 
-router.post('/register', async(req, res) => {
+exports.post = async(req, res) => {
 
     const {email} = req.body;
 
     try{
-
-        if(await Autor.findOne({email}))
+        var data = await repository.authenticate(req.body);
+        if(data)
             return res.status(400).send({error: 'Autor ja existe'})
 
-        const autor = await Autor.create(req.body);
+        const autor = await repository.create(req.body);
 
         autor.password = undefined;
 
@@ -23,12 +22,12 @@ router.post('/register', async(req, res) => {
     catch(ex){
         return res.status(400).send({error: 'Falha no registro'});
     }
-});
+};
 
-router.post('/authenticate', async(req, res) => {
+exports.authenticate = async(req, res) => {
     const {email, password} = req.body;
 
-    const autor = await Autor.findOne({email}).select('+password');
+    const autor = await repository.authenticate(req.body);
 
     if(!autor)
         return res.status(400).send({error: 'Autor não encontrado'});
@@ -39,6 +38,5 @@ router.post('/authenticate', async(req, res) => {
     autor.password = undefined;
 
     res.send({autor});
-})
+};
 
-module.exports = app => app.use('/auth', router);

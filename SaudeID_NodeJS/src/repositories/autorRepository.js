@@ -1,4 +1,3 @@
-'use strict';
 const mongoose = require('mongoose');
 const Autor = mongoose.model('Autor');
 
@@ -19,3 +18,4 @@ exports.getById = async(id) => {
     const res = await Autor.findById(id);
     return res;
 }
+

@@ -1,6 +1,4 @@
-'use strict';
-
-const repository = require('../repositories/product-repository');
+const repository = require('../repositories/postRepository');
 
 
 exports.get = async(req, res, next) => {
@@ -72,4 +70,3 @@ exports.delete = async(req, res, next) => {
 };
 
 
-module.exports = app => app.use('/post', router);

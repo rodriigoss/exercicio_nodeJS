@@ -1,4 +1,3 @@
-'use strict';
 const mongoose = require('mongoose');
 const Post = mongoose.model('Post');
 
@@ -30,3 +29,4 @@ exports.update = async(id, data) => {
 exports.delete = async(id) => {
     await Post.findOneAndRemove(id);
 }
+
