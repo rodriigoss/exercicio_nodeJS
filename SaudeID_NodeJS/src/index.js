@@ -7,6 +7,6 @@ app.use(json());
 app.use(urlencoded({extended: false}));
 
 require('./controllers/authController')(app);
-require('./controllers/postontroller')(app);
+require('./controllers/postController')(app);
 
 app.listen(3000);
