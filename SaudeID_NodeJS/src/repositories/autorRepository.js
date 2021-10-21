@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Autor = mongoose.model('Autor');
+const Autor = mongoose.model('autor');
 
 exports.create = async(data) => {
     var autor = new Autor(data);
