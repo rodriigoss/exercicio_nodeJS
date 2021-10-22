@@ -1,4 +1,4 @@
-const mongoose = require('momgoose');
+const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
     titulo: {

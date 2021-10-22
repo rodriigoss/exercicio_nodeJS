@@ -8,4 +8,4 @@ router.post('/', controller.post);
 router.put('/:id', controller.put);
 router.delete('/', controller.delete);
 
-module.exports = app => app.use('/post', router);
+module.exports = router;
